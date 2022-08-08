@@ -60,15 +60,7 @@ pipeline {
         }
       }
     }
- #   stage('Upload Docker image into Repo') {
- #     steps {
- #       script {
- #         docker.withRegistry('http://' + registry, registryCredentials) {
- #           dockerImage.push("latest")
- #         }
- #       }
- #     }
- #   }
+ 
 
     stage('K8S Deploy') {
       steps {
