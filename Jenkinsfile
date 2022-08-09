@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh script: 'mvn clean package'
+        sh script: 'mvn -f MyAwesomeApp/pom.xml clean package'
       }
     }
 
@@ -33,13 +33,15 @@ pipeline {
     stage('Upload War To Repo') {
       steps {
         script {
-          def mavenPom = readMavenPom file: 'pom.xml'
+          def mavenPom = readMavenPom file: 'MyAwesomeApp/pom.xml'
           def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "maven-snapshots" : "maven-releases"
           nexusArtifactUploader artifacts: [
               [artifactId: 'maven-project',
                 classifier: '',
-                file: "target/maven-project-${mavenPom.version}.war",
-                type: 'war'
+	        file: "target/springbootApp.jar",
+                type: 'jar'
+               # file: "target/maven-project-${mavenPom.version}.war",
+               # type: 'war'
               ]
             ],
             credentialsId: 'nexusid1',
