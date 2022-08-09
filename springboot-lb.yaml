@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-app
-        image: 54.226.187.187:8083/spring:latest
+        image: pankajpatre11/spring:latest
         imagePullPolicy: Always
       imagePullSecrets:
       - name: regcred        
