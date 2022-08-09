@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    imageName = "myapp"
+    imageName = "spring"
     registryCredentials = "nexusid1"
     registry = "54.226.187.187:8083"
     dockerImage = ''
