@@ -36,7 +36,7 @@ pipeline {
           def mavenPom = readMavenPom file: 'MyAwesomeApp/pom.xml'
           def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "maven-snapshots" : "maven-releases"
           nexusArtifactUploader artifacts: [
-              [artifactId: 'maven-project',
+              [artifactId: 'spring-project',
                 classifier: '',
 	        file: "MyAwesomeApp/target/springbootApp.jar",
                 type: 'jar'
