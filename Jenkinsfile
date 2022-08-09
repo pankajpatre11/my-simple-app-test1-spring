@@ -4,7 +4,7 @@ pipeline {
   environment {
     imageName = "myapp"
     registryCredentials = "nexusid1"
-    registry = "174.129.142.237:8083"
+    registry = "54.226.187.187:8083"
     dockerImage = ''
   }
   options {
@@ -44,7 +44,7 @@ pipeline {
             ],
             credentialsId: 'nexusid1',
             groupId: 'com.example',
-            nexusUrl: '174.129.142.237:8081',
+            nexusUrl: '54.226.187.187:8081',
             nexusVersion: 'nexus3',
             protocol: 'http',
             repository: nexusRepoName,
@@ -60,8 +60,19 @@ pipeline {
         }
       }
     }
- 
-
+       stage('Upload Docker image into Repo')
+        {
+            steps
+            {
+                 script{
+                       docker.withRegistry('http://'+registry, registryCredentials)
+                           {
+                           dockerImage.push("latest")
+                            }
+	                }   
+	    }
+            
+         }
     stage('K8S Deploy') {
       steps {
 
