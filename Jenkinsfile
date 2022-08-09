@@ -38,10 +38,8 @@ pipeline {
           nexusArtifactUploader artifacts: [
               [artifactId: 'maven-project',
                 classifier: '',
-	        file: "target/springbootApp.jar",
+	        file: "MyAwesomeApp/target/springbootApp.jar",
                 type: 'jar'
-               # file: "target/maven-project-${mavenPom.version}.war",
-               # type: 'war'
               ]
             ],
             credentialsId: 'nexusid1',
@@ -53,7 +51,8 @@ pipeline {
             version: "${mavenPom.version}"
         }
       }
-    }
+    }	    
+
 
     stage('Build Docker image') {
       steps {
