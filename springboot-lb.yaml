@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydeployment
+  name: mydeployment-spring
 spec:
   replicas: 2
   selector:
@@ -13,8 +13,8 @@ spec:
         app: angular-app
     spec:
       containers:
-      - name: my-angular-app
-        image: pankajpatre11/mywebapp:latest
+      - name: spring-app
+        image: 54.226.187.187:8083/spring:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
