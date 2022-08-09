@@ -16,6 +16,8 @@ spec:
       - name: spring-app
         image: 54.226.187.187:8083/spring:latest
         imagePullPolicy: Always
+      imagePullSecrets:
+      - name: regcred        
         ports:
         - containerPort: 8085
 # service type loadbalancer
